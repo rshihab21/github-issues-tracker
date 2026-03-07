@@ -1,29 +1,38 @@
- let currentTab = "all"
-const loadIssues = async () => {
+const container = document.getElementById("issuesContainer")
+const loader = document.getElementById("loader")
+const issueCount = document.getElementById("issueCount")
+
+let issues = []
+let currentTab = "all"
+
+
+async function loadIssues() {
+    loader.classList.remove("hidden")
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json()
-    displayData(data.data)
+    issues = data.data
+    displayIssues()
+    loader.classList.add("hidden")
+
 }
-loadIssues();
 
-
-const displayData = (issuesFilter) => {
-    const container = document.getElementById("issuesContainer");
-    const issueCount = document.getElementById("issueCount")
-    container.innerHTML = "";
+function displayIssues() {
+    container.innerHTML = ""
+    let filtered = issues
     if (currentTab === "open") {
-        issuesFilter = issues.filter(issue => issue.status === "open")
+        filtered = issues.filter(issue => issue.status === "open")
     }
     if (currentTab === "closed") {
-        issuesFilter = issues.filter(issue => issue.status === "closed")
+        filtered = issues.filter(issue => issue.status === "closed")
     }
+    issueCount.innerText = filtered.length + " Issues"
 
-    issueCount.innerText = issuesFilter.length + " Issues"
-    issuesFilter.forEach(issue => {
+    filtered.forEach(issue => {
         const borderColor =
             issue.status === "open"
                 ? "border-green-500"
                 : "border-purple-500"
+
         const card = document.createElement("div")
 
         card.className =
@@ -50,7 +59,36 @@ ${issue.author}
 </div>
 
 `
-container.appendChild(card)
+
+        container.appendChild(card)
 
     })
+
 }
+
+
+
+
+
+document.querySelectorAll(".tabBtn").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        document.querySelectorAll(".tabBtn").forEach(b => {
+            b.classList.remove("bg-purple-600", "text-white")
+            b.classList.add("bg-gray-200")
+        })
+
+        btn.classList.add("bg-purple-600", "text-white")
+
+        currentTab = btn.dataset.tab
+
+        displayIssues()
+
+    })
+
+})
+
+
+
+loadIssues()
