@@ -56,7 +56,8 @@
             <div class="flex justify-between items-center mb-6 bg-[#FFFFFF] shadow p-4 rounded-md">
                 <div class="flex items-center gap-2">
                     <div class="">
-                        <img src="./assets/Aperture.png" alt="" class="flex justify-center items-center bg-[#ECE4FF] w-12 h-12 rounded-full p-2">
+                        <img src="./assets/Aperture.png" alt=""
+                            class="flex justify-center items-center bg-[#ECE4FF] w-12 h-12 rounded-full p-2">
                     </div>
                     <div>
                         <span class="text-lg font-semibold" id="issueCount">0 Issues</span> <br>
@@ -67,10 +68,18 @@
                     <span class="text-green-600">● Open</span>
                     <span class="text-purple-600">● Closed</span>
                 </div>
+            </div>
 
+            <div id="loader" class="text-center hidden">
+                <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-600 mx-auto"></div>
+            </div>
+
+            <div id="issuesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             </div>
         </section>
     </main>
+
+    <script src="scripts/index.js"></script>
 </body>
 
 </html>
