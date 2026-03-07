@@ -90,18 +90,13 @@ function displayIssues() {
 
 
 document.querySelectorAll(".tabBtn").forEach(btn => {
-
     btn.addEventListener("click", () => {
-
         document.querySelectorAll(".tabBtn").forEach(b => {
             b.classList.remove("bg-purple-600", "text-white")
             b.classList.add("bg-gray-200")
         })
-
         btn.classList.add("bg-purple-600", "text-white")
-
-        currentTab = btn.dataset.tab
-
+        currentTab = btn.dataset.tab;
         displayIssues()
 
     })
@@ -111,10 +106,12 @@ document.querySelectorAll(".tabBtn").forEach(btn => {
 
 document.getElementById("searchBtn").onclick = async () => {
     const text = document.getElementById("searchInput").value.trim().toLowerCase();
+     loader.classList.remove("hidden");
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`)
     const data = await res.json()
     issues = data.data
     displayIssues()
+    loader.classList.add("hidden")
     
 }
 
