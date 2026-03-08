@@ -76,6 +76,42 @@
 
             <div id="issuesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             </div>
+
+
+            <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+            <dialog id="issueModal" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <h3 id="modalTitle" class="text-2xl font-bold mb-3"></h3>
+                    <div class="flex items-center gap-3 text-sm mb-4">
+                        <span id="modalStatus" class="badge badge-success text-white"></span>
+                        <span class="text-gray-500">• Opened by <span id="modalAuthor"></span></span>
+                        <span class="text-gray-400" id="modalDate"></span>
+                    </div>
+                    <div id="modalLabels" class="flex gap-2 mb-4"></div>
+                    <p id="modalDescription" class="text-gray-500 mb-5"></p>
+
+                    <div class="grid grid-cols-2 bg-gray-100 p-4 rounded-lg mb-4">
+                        <div>
+                            <p class="text-gray-500 text-sm">Assignee:</p>
+                            <p id="modalAssignee" class="font-semibold"></p>
+                        </div>
+
+                        <div>
+                            <p class="text-gray-500 text-sm">Priority:</p>
+                            <span id="modalPriority" class="badge badge-error text-white"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <button class="btn bg-purple-600 text-white hover:bg-purple-700">
+                                Close
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </dialog>
         </section>
     </main>
 
