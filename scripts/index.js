@@ -3,6 +3,12 @@ const loader = document.getElementById("loader")
 const issueCount = document.getElementById("issueCount");
 const modal = document.getElementById("issueModal")
 
+const params = new URLSearchParams(window.location.search);
+const isAuth = params.get("auth");
+
+if (isAuth !== "true") {
+    window.location.href = "signIn.html";
+}
 
 let issues = []
 let currentTab = "all"
