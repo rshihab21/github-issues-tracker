@@ -49,7 +49,7 @@ function displayIssues() {
             `bg-white p-4 rounded shadow border-t-4 ${borderColor} cursor-pointer hover:shadow-lg transition`
 
         card.innerHTML = `
-            <div id="modal_id" class="flex justify-between items-start">
+            <div  class="flex justify-between items-start">
             <div class="w-8 h-8 rounded-full flex items-center justify-center
             ${issue.status === "open" ? "bg-green-100 text-green-600" : "bg-purple-100 text-purple-600"}">
            ${issue.priority === "high" || issue.priority === "medium"
@@ -71,6 +71,7 @@ function displayIssues() {
             <h3 class="font-semibold text-lg mt-3">
             ${issue.title}
             </h3>
+            <p><small>${issue.status == "open"? `<span class="bg-[#00D390] px-2 py-1 rounded-md text-white">${issue.status}</span>`: `<span class="bg-[#AD46FF] px-2 py-1 rounded-md text-white">${issue.status}</span>`}</small></p>
             <p class="text-gray-500 text-sm mt-2">
             ${issue.description.slice(0, 90)}...
             </p>
