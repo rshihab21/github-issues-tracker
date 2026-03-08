@@ -73,8 +73,19 @@ function displayIssues() {
            
             </div>
             <div class="border-t mt-4 pt-3 text-sm text-gray-500">
-            <p>#${issue.id || 1} by ${issue.author}</p>
-            <p>${new Date(issue.createdAt).toLocaleDateString()}</p>
+            <div  class="flex justify-between">
+                <div>
+                    <p>#${issue.id || 1} by ${issue.author}</p>
+                    <p>Assignee:${issue.author}</p>
+                    
+                </div>
+                <div>
+                    <p>${new Date(issue.createdAt).toLocaleDateString()}</p>
+                    <p>Updated:${new Date(issue.updatedAt).toLocaleDateString()}</p>
+                </div>
+            </div>
+            
+            
             </div>
 
 `
